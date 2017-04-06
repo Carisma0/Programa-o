@@ -1,8 +1,23 @@
+--Incluindo bibliotecas--
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
 
+--Definindo Constante T--
+
+#define T 10
+
+--Definindo Funções--
+
+void ssort(char vet[],int qtd);
+int pesqseq(char v[], char busca);
+
+--Função Main--
+
 int main(){
+  printf("Simular a busca SEQUENCIAL do vetor ORDENADO v que contém os seguintes dados: 
+  Maria, Sandra, André, Maria, Dirce, Sandro, para o nome André\n\n");
 
 }
