@@ -7,12 +7,13 @@
 
 /*Definindo Constante T*/
 
-#define T 10
+#define QTD 6
+#define TAM 10
 
 /*Definindo Funções*/
 
-void ssort(char vet[],int qtd);
-int pesqseq(char v[], char busca);
+void bsort(char v[QTD][TAM],int qtd);
+int pesqseq(char v[QTD][TAM],char busca[TAM]);
 
 /*Função Main*/
 
@@ -23,8 +24,55 @@ int main(){
 
 /*Declaração de Variáveis*/
 
-  char pes,opc;
-  char v[T][10]={'Maria','Sandra','Andre','Mario','Dirce','Sandro'}; /*String de tamanho 10 com 10 digitos*/
+  char pes[TAM],opc;
+  char v[QTD][TAM] = {"Maria","Sandra","Andre","Mario","Dirce","Sandro"};
+  
+  bsort(v,QTD);
+  
+  do{
+  	system("cls");
+  	printf("Dado a ser pesquisado: ");
+  	gets(pes);
+  	if(pesqseq(v,pes)!=-1){
+  		puts(pes);
+  		printf(" esta no vetor.");
+  }
+  	else{
+  		puts(pes);
+  		printf(" não esta no vetor.");
+  	}
+  	printf("\nContinuar pesquisa?[S/N]");
+  	fflush(stdin);
+  	opc=getch();
+  }while(opc=='S'||opc=='s');
+  getch();
+  return 0;
+}
 
-return 0;
+void bsort(char v[QTD][TAM],int qtd){
+	
+	int i,j;
+	char temp[10];
+	
+	for(i=1;i<qtd;i++){
+		for(j=0;j<qtd-i;j++){
+			if(strcmp(v[j],v[j+1]) > 0){
+				strcpy(temp,v[j]);
+				strcpy(v[j],v[j+1]);
+				strcpy(v[j+1],temp);
+			}
+		}
+	}
+}
+
+int pesqseq(char v[QTD][TAM],char busca[TAM]){
+	int i;
+	for(i=0;i<QTD;i++){
+		if(strcmp(v[i],busca) == 0)
+			return i;
+		else
+			if(strcmp(v[i],busca)>1)
+				return -1;
+	}
+	return -1;
 }
