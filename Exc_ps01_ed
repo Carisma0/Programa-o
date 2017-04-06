@@ -17,8 +17,14 @@ int pesqseq(char v[], char busca);
 /*Função Main*/
 
 int main(){
+
   printf("Simular a busca SEQUENCIAL do vetor ORDENADO v que contém os seguintes dados:\n");
-  printf("Maria, Sandra, Andre, Maria, Dirce, Sandro, para o nome Andre.\n\n");
+  printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome Andre.\n\n");
+
+/*Declaração de Variáveis*/
+
+  char pes,opc;
+  char v[T][10]={'Maria','Sandra','Andre','Mario','Dirce','Sandro'}; /*String de tamanho 10 com 10 digitos*/
 
 return 0;
 }
