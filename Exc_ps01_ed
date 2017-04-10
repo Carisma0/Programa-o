@@ -19,8 +19,10 @@ int pesqseq(char v[QTD][TAM],char busca[TAM]);
 
 int main(){
 
-  printf("Simular a busca SEQUENCIAL do vetor ORDENADO v que contém os seguintes dados:\n");
+  printf("Simular a busca SEQUENCIAL do vetor ORDENADO v que contem os seguintes dados:\n");
   printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome informado.\n\n");
+
+  system("pause");
 
 /*Declaração de Variáveis*/
 
@@ -35,11 +37,11 @@ int main(){
   	gets(pes);
   	if(pesqseq(v,pes)!=-1){
   		puts(pes);
-  		printf(" esta no vetor.");
+  		printf("Esta no vetor.");
   }
   	else{
   		puts(pes);
-  		printf(" não esta no vetor.");
+  		printf("Nao esta no vetor.");
   	}
   	printf("\nContinuar pesquisa?[S/N]");
   	fflush(stdin);
