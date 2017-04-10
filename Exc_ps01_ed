@@ -20,7 +20,7 @@ int pesqseq(char v[QTD][TAM],char busca[TAM]);
 int main(){
 
   printf("Simular a busca SEQUENCIAL do vetor ORDENADO v que contém os seguintes dados:\n");
-  printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome Andre.\n\n");
+  printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome informado.\n\n");
 
 /*Declaração de Variáveis*/
 
