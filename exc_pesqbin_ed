@@ -1,4 +1,79 @@
-int main(){
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 
-return 0;
+#define QTD 6
+#define TAM 10
+
+void bsort(char v[QTD][TAM], int qtd);
+int pesqbin(char[QTD][TAM], char busca[TAM]);
+
+int main(){
+	
+	printf("Simular a busca BINARIA do vetor v que contém os seguintes dados:\n");
+	printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome informado\n\n");
+	
+	system("pause");
+	
+	char pes[TAM],opc;
+	char v[QTD][TAM] = {"Maria","Sandra","Andre","Mario","Dirce","Sandro"};
+	
+	bsort(v,QTD);
+	
+	do{
+		system("cls");
+		printf("Dado a ser pesquisado: ");
+		gets(pes);
+		if(pesqbin(v,pes)!=-1){
+			puts(pes);
+			printf("Esta no vetor.");
+		}
+		else{
+			puts(pes);
+			printf("Nao esta no veotr.");
+		}
+		printf("\nContinuar pesquisa?[S/N]");
+		fflush(stdin);
+		opc=getch();
+	}while(opc=='S'||opc=='s');
+	getch();
+	return 0;
+}
+
+void bsort(char v[QTD][TAM],int qtd){
+	
+	int i,j;
+	char temp[10];
+	
+	for(i=1;i<qtd;i++){
+		for(j=0;j<qtd-i;j++){
+			if(strcmp(v[j],v[j+1]) > 0){
+				strcpy(temp,v[j]);
+				strcpy(v[j],v[j+1]);
+				strcpy(v[j+1],temp);
+			}
+		}
+	}
+}
+
+int pesqbin(char v[QTD][TAM],char busca[TAM]){
+	
+	int inicio,fim,meio;
+	
+	inicio=0;
+	fim=QTD-1;
+	
+	while(inicio<=fim){
+		meio = (inicio+fim)/2;
+			if(strcmp(v[meio],busca)==0){
+				return meio;
+			}
+			if(strcmp(busca,v[meio])<0){
+				fim = meio-1;
+			}
+			else{
+				inicio=meio+1;
+			}
+	}
+	return -1;
 }
