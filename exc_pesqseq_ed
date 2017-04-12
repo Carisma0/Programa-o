@@ -1,21 +1,13 @@
-/*Incluindo bibliotecas*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
 
-/*Definindo Constante T*/
-
 #define QTD 6
 #define TAM 10
 
-/*Definindo Funções*/
-
 void bsort(char v[QTD][TAM],int qtd);
 int pesqseq(char v[QTD][TAM],char busca[TAM]);
-
-/*Função Main*/
 
 int main(){
 
@@ -23,8 +15,6 @@ int main(){
   printf("Maria, Sandra, Andre, Mario, Dirce, Sandro, para o nome informado.\n\n");
 
   system("pause");
-
-/*Declaração de Variáveis*/
 
   char pes[TAM],opc;
   char v[QTD][TAM] = {"Maria","Sandra","Andre","Mario","Dirce","Sandro"};
