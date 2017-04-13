@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#define QTD 5
+
+void ord_nome(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]);
+void ord_nota(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]);
+void ord_falta(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]);
+
+int main(){
+	
+	char nomes[QTD][10] = {"Lia","Ana","Ivo","Teo","Gil"};
+	float notas[QTD] = {7.5,9.5,3.5,4.5,8.5};
+	int faltas[QTD] = {3,7,15,11,1};
+	int i,opc;
+	
+	do{
+		system("cls");
+		printf("Escolha uma opção:\n\n");
+		printf("1. Ordena Nome\n");
+		printf("2. Ordena Nota\n");
+		printf("3. Ordena Faltas\n");
+		printf("4. Sair\n\n");
+		
+		scanf("%d",&opc);
+		if(opc==4)return 0;
+		
+		switch(opc){
+			case 1:
+				ord_nome(nomes,notas,faltas);break;
+			case 2:
+				ord_nota(nomes,notas,faltas);break;
+			case 3:
+				ord_falta(nomes,notas,faltas);break;
+		}
+		system("cls");
+		printf("Dados ordenados \n");
+		for(i=0;i<QTD;i++){
+			printf("%s",nomes[i]);
+			printf(" - %.1f",notas[i]);
+			printf(" - %d\n",faltas[i]);
+		}
+		getch();
+	}while (opc!=4);
+	getch();
+	return 0;
+}
+
+void ord_nome(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]){
+	
+	int i,j;
+	char t_nome[10];
+	float t_nota=0;
+	int t_falta=0;
+	
+	for(i=1;i<QTD;i++){
+		for(j=0;j<QTD-i;j++){
+			if(strcmp(vet_nome[j],vet_nome[j+1])>0){
+				strcpy(t_nome,vet_nome[j]);
+				t_nota = vet_nota[j];
+				t_falta = vet_falta[j];
+				
+				strcpy(vet_nome[j],vet_nome[j+1]);
+				vet_nota[j] = vet_nota[j+1];
+				vet_falta[j] = vet_falta[j+1];
+				
+				strcpy(vet_nome[j+1],t_nome);
+				vet_nota[j+1] = t_nota;
+				vet_falta[j+1] = t_falta;
+			}
+		}
+	}
+}
+
+void ord_nota(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]){
+	
+	int i,min,j;
+	char t_nome[10];
+	float t_nota;
+	int t_falta;
+	
+	for(i=0;i<(QTD-1);i++){
+		min=i;
+		
+		for(j=(i+1);j<QTD;j++){
+			
+			if(vet_nota[j]<vet_nota[min])
+				min=j;			
+		}
+		
+		if(i!=min){
+			strcpy(t_nome,vet_nome[i]);
+			t_nota = vet_nota[i];
+			t_falta = vet_falta[i];
+			
+			strcpy(vet_nome[i],vet_nome[min]);
+			vet_nota[i] = vet_nota[min];
+			vet_falta[i] = vet_falta[min];
+
+			strcpy(vet_nome[min],t_nome);
+			vet_nota[min] = t_nota;
+			vet_falta[min] = t_falta;
+		}
+	}	
+}
+
+void ord_falta(char vet_nome[QTD][10],float vet_nota[QTD],int vet_falta[QTD]){
+	
+	int i,j;
+	char t_nome[10];
+	float t_nota;
+	int t_falta;
+	
+	for(i=1;i<QTD;i++){
+		
+		strcpy(t_nome,vet_nome[i]);
+		t_nota = vet_nota[i];
+		t_falta = vet_falta[i];
+		
+		j=i-1;
+		while(j>=0 && vet_falta[j] > t_falta){
+			strcpy(vet_nome[j+1],vet_nome[j]);
+			vet_nota[j+1] = vet_nota[j];
+			vet_falta[j+1] = vet_falta[j];
+			j--;
+		}
+		strcpy(vet_nome[j+1],t_nome);
+		vet_nota[j+1] = t_nota;
+		vet_falta[j+1] = t_falta;
+	}	
+}
